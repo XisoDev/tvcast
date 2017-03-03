@@ -1,0 +1,14 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">채널목록</h1>
+    <button ng-click="closeChannelList()" class="button-dark button"><i class="ion-close"></i> 닫기</button>
+  </ion-header-bar>
+  <ion-content>
+    <div class="channel_item" ng-repeat="channel in channel_list">
+      <a href="#" ng-click="changeChannel(channel.channel)">
+        <img ng-src="{{channel.thumbnail}}" width="100%" />
+        <h4><small>{{channel.category}}</small> {{channel.title}}</h4>
+      </a>
+    </div>
+  </ion-content>
+</ion-modal-view>

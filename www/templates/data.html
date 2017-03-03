@@ -1,0 +1,11 @@
+<div class="bp-hs_inner">
+  <div class="bp-hs_inner__item"
+       ng-repeat="data in sequence[seq_code] track by $index"
+       data-transform="{{data.transition}}"
+       ng-attr-style="{{data.file_type.indexOf('i') == 0 ? 'background-image:url(' + data.device_filename + ');' : undefined}}"
+  >
+    <video ng-if="data.file_type.indexOf('v') == 0">
+      <source ng-src="{{data.device_filename}}" type="video/mp4" />
+    </video>
+  </div>
+</div>
