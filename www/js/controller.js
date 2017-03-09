@@ -9,7 +9,6 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
 
     //채널코드. 단말기의 인증여부를 검사함. localStorage에 별도 저장하고 매번 호출해와야함.
     $scope.player.channel = "0000";
-
     // $scope.player.rightBanner = {};
     // $scope.player.rightBanner.link = "http://naver.com";
     // $scope.player.rightBanner.src = "./demo/rightbanner.jpg";
