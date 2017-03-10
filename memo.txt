@@ -2,3 +2,16 @@ keystore password
 jdfnc123
 
 CN=softgear, OU=softgear, O=softgear, L=busan, ST=busan, C=82
+
+푸시 FCM
+프로젝트 ID help_outline  didplayer-ef340
+웹 API 키  AIzaSyB1QCoR1A_pfZyL9JkdW0LhLKWuMOJNmaI
+
+서버 키 (GCM)
+AIzaSyDdHSzObh2v58Z8okOVmSlTrO_y0dBXtJ8
+
+서버 키 (FCM)
+AAAAKt6GcqU:APA91bF58hD5hkB8dY8abCNd7WwIf57HuC4kXM7E4ID2XTynXSGdMsZmZef48gUQNJKzkPdbmuVCS-F6_HHaK4ByXaJLofN_bn5RINMUhSJgBs_2kLgSXgsi9LA6MLSwwRwUKwcqMsGC
+
+발신자 ID 
+184121979557

@@ -13,33 +13,42 @@
             "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
             "XWALK_MODE": "embedded",
             "XWALK_MULTIPLEAPK": "true",
-            "PACKAGE_NAME": "com.ionicframework.did930910"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
         },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.ionicframework.did930910"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
         },
         "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "com.ionicframework.did930910"
-        },
-        "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "com.ionicframework.did930910"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.ionicframework.did930910"
-        },
-        "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "com.ionicframework.did930910"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "com.ionicframework.did930910"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+        },
+        "cordova-plugin-fcm": {
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+        },
+        "cordova-plugin-velda-devicefeedback": {
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.ionicframework.did930910"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
         },
         "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.ionicframework.did930910"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
         }
     }
 }
