@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.did930910" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>did</name>
+  <name>홈방 DID</name>
   <description>
-        An Ionic Framework and Cordova project.
+        홈방 DID 플레이어 앱
     </description>
-  <author email="you@example.com" href="http://example.com/">
-      Your Name Here
+  <author email="xiso@xiso.co.kr" href="http://xiso.co.kr/">
+      XISO
     </author>
   <content src="index.html"/>
   <access origin="*"/>
