@@ -1,5 +1,5 @@
 // 레이아웃
-app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer, $timeout, FileObj, Server, Auth, Tpl, DownloadedContent, Content, Channel){
+app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer, $timeout, FileObj, Server, Auth, Tpl, DownloadedContent, Content, Channel, Viewcount){
     $scope.time_id1 = null;
     $scope.is_downloding = false;
     $scope.tpls = Tpl;
@@ -17,6 +17,9 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
     $scope.seq_code = "";
 
     $scope.next = function(obj_id, data_obj, seq_idx){
+        //뷰카운트를 전송
+        Viewcount.send(DownloadedContent.get().content_srl, data_obj[seq_idx].file_srl);
+
         //일단 이 시퀀스 내의 모든 비디오를 중지
         jQuery("#" + obj_id).find("video").each(function () {
             this.pause();

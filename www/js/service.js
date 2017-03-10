@@ -174,6 +174,23 @@ app
     return self;
 })
 
+.factory("Viewcount",function(XisoApi, Device){
+  var self = this;
+
+  self.send = function(content_srl, file_srl){
+    var device = Device.get();
+    var params = {
+      uuid : device.uuid,
+      content_srl : content_srl,
+      file_srl : file_srl
+    }
+
+    return XisoApi.send('file.procIncreaseCount',params);
+  };
+
+  return self;
+})
+
 .factory("Auth", function(XisoApi, Device){
     var self = this;
 
