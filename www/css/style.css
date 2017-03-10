@@ -306,3 +306,22 @@ footer td a{
   width:100%;
   height:33.33333334%;
 }
+
+.progress{
+    width:120px;
+    padding-top:15px;
+    border-radius: 10px;
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    text-align: center;
+}
+.percent{
+    font-size: 30px;
+}
+.total{
+    font-size: 12px;
+}

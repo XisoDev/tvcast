@@ -5,29 +5,53 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('didplayer', ['ionic','ngCordova']);
 
-app.run(function($ionicPlatform, FileObj, Device) {
-  $ionicPlatform.ready(function() {
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-      // for form inputs)
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+app.run(function($ionicPlatform, $rootScope, $ionicPopup, FileObj, Device) {
+    $ionicPlatform.ready(function() {
+        if(window.cordova && window.cordova.plugins.Keyboard) {
+            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+            // for form inputs)
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 
-      // Don't remove this line unless you know what you are doing. It stops the viewport
-      // from snapping when text inputs are focused. Ionic handles this internally for
-      // a much nicer keyboard experience.
-      cordova.plugins.Keyboard.disableScroll(true);
-    }
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
-    }
+            // Don't remove this line unless you know what you are doing. It stops the viewport
+            // from snapping when text inputs are focused. Ionic handles this internally for
+            // a much nicer keyboard experience.
+            cordova.plugins.Keyboard.disableScroll(true);
+        }
+        if(window.StatusBar) {
+        // StatusBar.styleDefault();
+        StatusBar.hide();
+        }
 
-      FileObj.set(cordova.file);
-      console.log('fileObj---');
-      console.log(FileObj.get());
+        FileObj.set(cordova.file);
 
-      Device.set(ionic.Platform.device());
+        Device.set(ionic.Platform.device());
 
-  });
+    });
+    //back button action
+    $ionicPlatform.registerBackButtonAction(function(e) {
+
+        e.preventDefault();
+
+        $rootScope.exitApp = function() {
+            $ionicPopup.confirm({
+                title: "<strong>앱을 종료할까요?</strong>",
+                template: '확인하시면 앱을 종료할 수 있습니다.',
+                buttons: [
+                    { text: '취소' },
+                    {
+                        text: '<b>종료</b>',
+                        type: 'button-positive',
+                        onTap: function(e) {
+                            ionic.Platform.exitApp();
+                        }
+                    }
+                ]
+            });
+        };
+        $rootScope.exitApp();
+
+        return false;
+    }, 101);
 });
 
 app.config(function($stateProvider,$urlRouterProvider) {
