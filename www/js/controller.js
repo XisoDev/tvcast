@@ -191,6 +191,8 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
 
         Auth.get().then(function(res){
             // console.log(res);
+            $scope.auth_no = res.result.auth_no;
+
             // 데이터 서버 주소가 있으면 (채널 ID 가 있으면) 데이터 서버에서 컨텐츠 정보를 받아온다.
             if(res.result.server_url){
 
@@ -206,8 +208,6 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
             }else{
 
                 Server.setMain();
-
-                $scope.auth_no = res.result.auth_no;
 
                 Content.get().then(function(res2){
                     console.log(res2);
@@ -239,15 +239,9 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
         }
 
         if(content.timelines.length > 0) {
-            var timelines = [];
-            angular.forEach(content.timelines, function (value, key) {
-                angular.forEach(value, function (v, k) {
-                    v.seq = key;
-                    this.push(v);
-                }, timelines);
-            });
+            var timelines = $scope.arr_2D_to_1D(content.timelines);
 
-            if(!DownloadedContent.get() || (DownloadedContent.get().content_srl != content.content_srl)){
+            if(!DownloadedContent.get() || (DownloadedContent.get().content_srl != content.content_srl) || !$scope.isSameContent(DownloadedContent.get(), content)){
 
                 console.log('down');
 
@@ -287,5 +281,59 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
     // function safeApply(scope, fn) {
     //     (scope.$$phase || scope.$root.$$phase) ? fn() : scope.$apply(fn);
     // }
+
+    // 같은 타임라인인지 비교
+    $scope.isSameContent = function(a, b){
+        var result = true;
+
+        if(a.notices.length != b.notices.length) return false;
+
+        for(i=0; i< a.notices.length; i++){
+            if(a.notices[i].url_prefix != b.notices[i].url_prefix) return false;
+            if(a.notices[i].url != b.notices[i].url) return false;
+            if(a.notices[i].content != b.notices[i].content) return false;
+        }
+
+        if(a.template != b.template) return false;
+
+        var timeline1 = $scope.arr_2D_to_1D(a.timelines);
+        var timeline2 = $scope.arr_2D_to_1D(b.timelines);
+
+        // 타임라인 길이가 다르면
+        if(timeline1.length != timeline2.length) return false;
+
+        for(i =0 ; i < timeline1.length ; i++){
+            if(timeline1[i].sid != timeline2[i].sid){
+                result = false; return false;
+            }
+            if(timeline1[i].duration != timeline2[i].duration){
+                result = false; return false;
+            }
+            if(timeline1[i].url_prefix != timeline2[i].url_prefix){
+                result = false; return false;
+            }
+            if(timeline1[i].url != timeline2[i].url){
+                result = false; return false;
+            }
+            if(timeline1[i].transition != timeline2[i].transition){
+                result = false; return false;
+            }
+        }
+
+        return result;
+    };
+
+    $scope.arr_2D_to_1D = function(arr){
+        var convertedArr = [];
+
+        angular.forEach(arr, function (value, key) {
+            angular.forEach(value, function (v, k) {
+                v.seq = key;
+                this.push(v);
+            }, convertedArr);
+        });
+
+        return convertedArr;
+    };
 
 });
