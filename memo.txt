@@ -1,0 +1,4 @@
+keystore password
+jdfnc123
+
+CN=softgear, OU=softgear, O=softgear, L=busan, ST=busan, C=82

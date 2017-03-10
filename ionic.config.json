@@ -1,6 +1,6 @@
 {
   "name": "did",
-  "app_id": "",
+  "app_id": "df7f7987",
   "proxies": [
     {
       "path": "/api",

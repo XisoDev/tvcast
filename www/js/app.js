@@ -25,7 +25,6 @@ app.run(function($ionicPlatform, $rootScope, $ionicPopup, FileObj, Device) {
         FileObj.set(cordova.file);
 
         Device.set(ionic.Platform.device());
-
     });
     //back button action
     $ionicPlatform.registerBackButtonAction(function(e) {
