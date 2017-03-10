@@ -13,14 +13,8 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
     //우하단 버튼노출유무
     $scope.player.didmode = true;
 
-    //전화하기 주문하기 버튼 노출유무
-    // $scope.player.callnum = "01057595999";
-    // $scope.player.order_url = "http://softgear.xiso.kr";
 
     $scope.seq_code = "";
-    //시퀀스 하나짜리 풀스크린
-    // $scope.template_mode = "full";
-    // $scope.sequence_count = 1;
 
     $scope.next = function(obj_id, data_obj, seq_idx){
         //일단 이 시퀀스 내의 모든 비디오를 중지
@@ -55,6 +49,7 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
         $scope.sequence[obj_id] = data_obj;
 
         setTimeout(function () {
+            jQuery('#' + obj_id).addClass('bp-hs');
             jQuery('#' + obj_id).bpHS({
                 autoPlay: false,
                 showControl: false,
@@ -151,8 +146,8 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
         }else{
             $scope.is_downloading = false;
             console.log('파일 다운로드 완료');
-
-            $scope.runSlider(timelines);
+            document.location.reload();
+            // $scope.runSlider(timelines);
         }
     };
 
@@ -264,13 +259,10 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
                 $scope.download(timelines);
 
                 $scope.is_first = false;
-
             }else{
                 console.log('no down');
                 // console.log($scope.sequence);
-
                 if($scope.is_first) {
-
                     // TODO 일단 content_srl 이 같으면 skip 한다
                     // content_srl 이 같아도 변경되어 있을 수 있기 때문에 나중에 수정
                     $scope.runSlider(timelines);

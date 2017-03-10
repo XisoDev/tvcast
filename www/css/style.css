@@ -3,6 +3,9 @@
 .scroll{
   height:100%;
 }
+.bp-hs{
+  float:left; overflow:hidden;
+}
 .bp-hs_inner__item{
   width:100%;
   height:100%;
@@ -96,7 +99,7 @@ video {
 }
 #player_area{
   height:100%;
-  padding-bottom:110px;
+  /*padding-bottom:110px;*/
 }
 aside.leftBanner{
   position:fixed;
@@ -276,36 +279,36 @@ footer td a{
   }
 }
 
-/* one screen */
-.fullscreen{
-  -webkit-align-items: stretch;
-  align-items: stretch;
-  display: flex;
-  height:100%;
-}
+/*!* one screen *!*/
+/*.fullscreen{*/
+  /*-webkit-align-items: stretch;*/
+  /*align-items: stretch;*/
+  /*display: flex;*/
+  /*height:100%;*/
+/*}*/
 
-/* Two screen */
-.tpl_vh{
-  float:left;
-  width:50%;
-  height:100%;
-}
+/*!* Two screen *!*/
+/*.tpl_vh{*/
+  /*float:left;*/
+  /*width:50%;*/
+  /*height:100%;*/
+/*}*/
 
-.tpl_hv{
-  width:100%;
-  height:50%;
-}
+/*.tpl_hv{*/
+  /*width:100%;*/
+  /*height:50%;*/
+/*}*/
 
-/* 3Screen */
-.tpl_vvv{
-  float:left;
-  height:100%;
-  width:33%;
-}
-.tpl_hhh{
-  width:100%;
-  height:33.33333334%;
-}
+/*!* 3Screen *!*/
+/*.tpl_vvv{*/
+  /*float:left;*/
+  /*height:100%;*/
+  /*width:33%;*/
+/*}*/
+/*.tpl_hhh{*/
+  /*width:100%;*/
+  /*height:33.33333334%;*/
+/*}*/
 
 .progress{
     width:120px;

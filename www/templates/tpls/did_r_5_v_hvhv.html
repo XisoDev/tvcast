@@ -5,13 +5,12 @@
     BOTTOM
 </div>
 <div style="height:85%; width:100%; padding:0;">
-    <div style="width:40%;margin:2.5% 5% 2.5% 0; height:90%;">
-        1
+    <div style="width:40%;margin:2.5% 5% 2.5% 0; height:90%;" id="sequence1" ng-repeat="seq_code in ['sequence1']" ng-include="'./templates/data.html'">
     </div>
     <div style="width:55%; height:100%; padding:0;">
-        <div style="width:50%; height:50%;">2</div>
-        <div style="width:50%; height:50%;">3</div>
-        <div style="width:50%; height:50%;">4</div>
-        <div style="width:50%; height:50%;">5</div>
+        <div style="width:50%; height:50%;" id="sequence2" ng-repeat="seq_code in ['sequence2']" ng-include="'./templates/data.html'"></div>
+        <div style="width:50%; height:50%;" id="sequence3" ng-repeat="seq_code in ['sequence3']" ng-include="'./templates/data.html'"></div>
+        <div style="width:50%; height:50%;" id="sequence4" ng-repeat="seq_code in ['sequence4']" ng-include="'./templates/data.html'"></div>
+        <div style="width:50%; height:50%;" id="sequence5" ng-repeat="seq_code in ['sequence5']" ng-include="'./templates/data.html'"></div>
     </div>
 </div>
