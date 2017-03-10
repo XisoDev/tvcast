@@ -31,20 +31,24 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
         l.find(".bp-hs_inner__item.is-active").next().length ? (l.find(".bp-hs_inner__item.is-active").removeClass("is-active").next().addClass("is-active"), a.find(".bp-bullets_bullet.current").removeClass("current").next().addClass("current")) : (l.find(".bp-hs_inner__item.is-active").removeClass("is-active"), a.find(".bp-bullets_bullet.current").removeClass("current"), l.find(".bp-hs_inner__item").eq(0).addClass("is-active"), a.find(".bp-bullets_bullet").eq(0).addClass("current"));
 
         //이번 클립이 비디오면 재생.
-        if (data_obj[seq_idx].file_type.indexOf('v') == 0) {
-            if (l.find(".bp-hs_inner__item.is-active").find('video').size()) {
-                l.find(".bp-hs_inner__item.is-active").find('video')[0].play();
-            }
-        }
-
-        //build next_seq
-        setTimeout(function () {
+        if (data_obj[seq_idx].file_type.indexOf('v') == 0 && l.find(".bp-hs_inner__item.is-active").find('video').size()) {
+              l.find(".bp-hs_inner__item.is-active").find('video')[0].play();
+              l.find(".bp-hs_inner__item.is-active").find('video')[0].addEventListener("ended", function(){
+                if (data_obj[seq_idx + 1]) {
+                  $scope.next(obj_id, data_obj, seq_idx + 1);
+                } else {
+                  $scope.next(obj_id, data_obj, 0);
+                }
+              });
+        }else{
+          setTimeout(function () {
             if (data_obj[seq_idx + 1]) {
-                $scope.next(obj_id, data_obj, seq_idx + 1);
+              $scope.next(obj_id, data_obj, seq_idx + 1);
             } else {
-                $scope.next(obj_id, data_obj, 0);
+              $scope.next(obj_id, data_obj, 0);
             }
-        }, data_obj[seq_idx].duration * 1000);
+          }, data_obj[seq_idx].duration * 1000);
+        }
     };
 
     $scope.sequence = [];
@@ -124,7 +128,12 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
         // console.log(fileObj);
 
         if($scope.down_cur < $scope.down_total){
-            var url = Server.get().url;
+            var url = '';
+            if(timelines[$scope.down_cur].seq == 0 && timelines[$scope.down_cur].is_main == 'Y'){
+              url = Server.getMain();
+            }else{
+              url = Server.get().url;
+            }
             var path = DownloadedContent.get().content_srl + timelines[$scope.down_cur].uploaded_filename.substr(timelines[$scope.down_cur].uploaded_filename.lastIndexOf('/'));
             var targetPath = fileObj.externalDataDirectory + path;
             timelines[$scope.down_cur].device_filename = targetPath;
@@ -145,7 +154,6 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
                     $scope.progress = Math.floor((progress.loaded / progress.total) * 100);
                 });
             });
-
         }else{
             $scope.is_downloading = false;
             console.log('파일 다운로드 완료');
@@ -178,7 +186,7 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
 
         $scope.sequence = [];
         angular.forEach(sequences, function(sequence,idx){
-            $scope.buildSlider("sequence" + (idx + 1), sequence);
+            $scope.buildSlider("sequence" + idx, sequence);
         });
 
         clearInterval($scope.time_id1);

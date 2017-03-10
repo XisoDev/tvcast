@@ -153,8 +153,12 @@ app
         window.localStorage['server'] = JSON.stringify(serverObj);
     };
 
+    self.getMain = function(){
+      return 'http://did.xiso.co.kr';
+    };
+
     self.setMain = function(){
-        self.set({url: 'http://did.xiso.co.kr', is_main: 'Y'});
+        self.set({url: self.getMain(), is_main: 'Y'});
     };
 
     return self;
