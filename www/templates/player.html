@@ -27,15 +27,7 @@
       </button>
     </div>
     <div id="player_area" ng-class="{'hasRight':player.rightBanner}">
-    <div ng-if="template_mode == 'full'" class="fullheight" ng-include="'./templates/tpl_1.html'"></div>
-    <div ng-if="template_mode == 'vh'" class="fullheight" ng-include="'./templates/tpl_2_v.html'"></div>
-    <div ng-if="template_mode == 'hv'" class="fullheight" ng-include="'./templates/tpl_2_h.html'"></div>
-    <div ng-if="template_mode == 'vhh'" class="fullheight" ng-include="'./templates/tpl_3_12.html'"></div>
-    <div ng-if="template_mode == 'hhv'" class="fullheight" ng-include="'./templates/tpl_3_21.html'"></div>
-    <div ng-if="template_mode == 'vvv'" class="fullheight" ng-include="'./templates/tpl_3_v.html'"></div>
-    <div ng-if="template_mode == 'hhh'" class="fullheight" ng-include="'./templates/tpl_3_h.html'"></div>
-    <div ng-if="template_mode == 'hhvv'" class="fullheight" ng-include="'./templates/tpl_4_hhvv.html'"></div>
-    <div ng-if="template_mode == 'vhhh'" class="fullheight" ng-include="'./templates/tpl_4_vhhh.html'"></div>
+      <div class="fullheight" ng-include="'./templates/tpls/' + template_mode + '.html'"></div>
     </div>
     <footer ng-class="{'hasRight':!player.didmode}">
       <ul id="ticker_01" class="ticker">

@@ -9,13 +9,6 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
 
     //채널코드. 단말기의 인증여부를 검사함. localStorage에 별도 저장하고 매번 호출해와야함.
     // $scope.player.channel = "0000";
-    // $scope.player.rightBanner = {};
-    // $scope.player.rightBanner.link = "http://naver.com";
-    // $scope.player.rightBanner.src = "./demo/rightbanner.jpg";
-    //
-    // $scope.player.leftBanner = {};
-    // $scope.player.leftBanner.link = "http://naver.com";
-    // $scope.player.leftBanner.src = "./demo/leftbanner.png";
 
     //우하단 버튼노출유무
     $scope.player.didmode = true;
@@ -26,8 +19,8 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
 
     $scope.seq_code = "";
     //시퀀스 하나짜리 풀스크린
-    $scope.template_mode = "full";
-    $scope.sequence_count = 1;
+    // $scope.template_mode = "full";
+    // $scope.sequence_count = 1;
 
     $scope.next = function(obj_id, data_obj, seq_idx){
         //일단 이 시퀀스 내의 모든 비디오를 중지
@@ -213,9 +206,9 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
 
             // 채널 ID 가 없으면 인증번호를 받고 데모 컨텐츠 정보를 받아온다
             }else{
-                
+
                 Server.setMain();
-                
+
                 $scope.auth_no = res.result.auth_no;
 
                 Content.get().then(function(res2){
