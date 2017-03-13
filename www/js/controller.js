@@ -30,25 +30,40 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
         var l = a.find(".bp-hs_inner");
         l.find(".bp-hs_inner__item.is-active").next().length ? (l.find(".bp-hs_inner__item.is-active").removeClass("is-active").next().addClass("is-active"), a.find(".bp-bullets_bullet.current").removeClass("current").next().addClass("current")) : (l.find(".bp-hs_inner__item.is-active").removeClass("is-active"), a.find(".bp-bullets_bullet.current").removeClass("current"), l.find(".bp-hs_inner__item").eq(0).addClass("is-active"), a.find(".bp-bullets_bullet").eq(0).addClass("current"));
 
+        //이번 클립이 비디오면 재생.일다 원복
+        // if (data_obj[seq_idx].file_type.indexOf('v') == 0 && l.find(".bp-hs_inner__item.is-active").find('video').size()) {
+        //       l.find(".bp-hs_inner__item.is-active").find('video')[0].play();
+        //       l.find(".bp-hs_inner__item.is-active").find('video')[0].addEventListener("ended", function(){
+        //         if (data_obj[seq_idx + 1]) {
+        //           $scope.next(obj_id, data_obj, seq_idx + 1);
+        //         } else {
+        //           $scope.next(obj_id, data_obj, 0);
+        //         }
+        //       });
+        // }else{
+        //   setTimeout(function () {
+        //     if (data_obj[seq_idx + 1]) {
+        //       $scope.next(obj_id, data_obj, seq_idx + 1);
+        //     } else {
+        //       $scope.next(obj_id, data_obj, 0);
+        //     }
+        //   }, data_obj[seq_idx].duration * 1000);
+        // }
         //이번 클립이 비디오면 재생.
-        if (data_obj[seq_idx].file_type.indexOf('v') == 0 && l.find(".bp-hs_inner__item.is-active").find('video').size()) {
-              l.find(".bp-hs_inner__item.is-active").find('video')[0].play();
-              l.find(".bp-hs_inner__item.is-active").find('video')[0].addEventListener("ended", function(){
-                if (data_obj[seq_idx + 1]) {
-                  $scope.next(obj_id, data_obj, seq_idx + 1);
-                } else {
-                  $scope.next(obj_id, data_obj, 0);
-                }
-              });
-        }else{
-          setTimeout(function () {
-            if (data_obj[seq_idx + 1]) {
-              $scope.next(obj_id, data_obj, seq_idx + 1);
-            } else {
-              $scope.next(obj_id, data_obj, 0);
-            }
-          }, data_obj[seq_idx].duration * 1000);
+        if (data_obj[seq_idx].file_type.indexOf('v') == 0) {
+          if (l.find(".bp-hs_inner__item.is-active").find('video').size()) {
+            l.find(".bp-hs_inner__item.is-active").find('video')[0].play();
+          }
         }
+
+        //build next_seq
+        setTimeout(function () {
+          if (data_obj[seq_idx + 1]) {
+            $scope.next(obj_id, data_obj, seq_idx + 1);
+          } else {
+            $scope.next(obj_id, data_obj, 0);
+          }
+        }, data_obj[seq_idx].duration * 1000);
     };
 
     $scope.sequence = [];
@@ -294,12 +309,15 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
     $scope.isSameContent = function(a, b){
         var result = true;
 
-        if(a.notices.length != b.notices.length) return false;
+        if(a.notices && b.notices){
+          if(a.notices.length != b.notices.length) return false;
 
-        for(i=0; i< a.notices.length; i++){
+          for(i=0; i< a.notices.length; i++){
             if(a.notices[i].url_prefix != b.notices[i].url_prefix) return false;
             if(a.notices[i].url != b.notices[i].url) return false;
             if(a.notices[i].content != b.notices[i].content) return false;
+          }
+
         }
 
         if(a.template != b.template) return false;

@@ -3,7 +3,7 @@
 .scroll{
   height:100%;
 }
-.bp-hs{
+#player_area .fullheight div{
   float:left; overflow:hidden;
 }
 .bp-hs_inner__item{
@@ -206,70 +206,70 @@ footer td a{
   }
 }
 @media (max-width: 680px) {
-  #player_area{
-    padding-bottom:60px;
-  }
-  #player_area.hasRight{
-    padding-right:150px;
-  }
+  /*#player_area{*/
+    /*!*padding-bottom:60px;*!*/
+  /*}*/
+  /*#player_area.hasRight{*/
+    /*padding-right:150px;*/
+  /*}*/
 
-  aside.leftBanner{
-    position:fixed;
-    left:30px;
-    bottom:80px;
-    width:130px;
-    z-index:100;
-  }
-  aside.rightBanner{
-    width:150px;
-    padding-bottom:40px;
-  }
+  /*aside.leftBanner{*/
+    /*position:fixed;*/
+    /*left:30px;*/
+    /*bottom:80px;*/
+    /*width:130px;*/
+    /*z-index:100;*/
+  /*}*/
+  /*aside.rightBanner{*/
+    /*width:150px;*/
+    /*padding-bottom:40px;*/
+  /*}*/
 
-  footer{
-    height:60px;
-  }
-  footer.hasRight{
-    padding-right:80px;
-  }
-  footer h2,
-  footer a{
-    font-size:12px;
-    color:#FFF;
-  }
-  footer h2{
-    font-size:12px;
-  }
-  footer td{
-    padding:0;
-    margin:0;
-    height:70px;
-  }
-  footer td.btn{
-    width:70px;
-  }
-  footer td a i{
-    padding:0;
-    font-size:20px;
-  }
-  footer td a{
-    display:block;
-    width:100%;
-    text-align:center;
-    font-size:12px;
-    color:#FFF;
-    text-decoration:none;
-  }
-  #fixedBtn {
-    height:60px;
-    width:80px;
-  }
-  #fixedBtn button{
-    font-size:1px;
-  }
-  #fixedBtn button i{
-    font-size:40px;
-    display:block;
-  }
+  /*footer{*/
+    /*height:60px;*/
+  /*}*/
+  /*footer.hasRight{*/
+    /*padding-right:80px;*/
+  /*}*/
+  /*footer h2,*/
+  /*footer a{*/
+    /*font-size:12px;*/
+    /*color:#FFF;*/
+  /*}*/
+  /*footer h2{*/
+    /*font-size:12px;*/
+  /*}*/
+  /*footer td{*/
+    /*padding:0;*/
+    /*margin:0;*/
+    /*height:70px;*/
+  /*}*/
+  /*footer td.btn{*/
+    /*width:70px;*/
+  /*}*/
+  /*footer td a i{*/
+    /*padding:0;*/
+    /*font-size:20px;*/
+  /*}*/
+  /*footer td a{*/
+    /*display:block;*/
+    /*width:100%;*/
+    /*text-align:center;*/
+    /*font-size:12px;*/
+    /*color:#FFF;*/
+    /*text-decoration:none;*/
+  /*}*/
+  /*#fixedBtn {*/
+    /*height:60px;*/
+    /*width:80px;*/
+  /*}*/
+  /*#fixedBtn button{*/
+    /*font-size:1px;*/
+  /*}*/
+  /*#fixedBtn button i{*/
+    /*font-size:40px;*/
+    /*display:block;*/
+  /*}*/
   .ticker{
     position:absolute;
     background:rgba(0,0,0,.6);
