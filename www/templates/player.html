@@ -1,5 +1,5 @@
 <ion-view view-title="DID PLAYER" name="playerView" ng-attr-style="{{player.background ? 'background-image:url(' + player.background + ');' : undefined}}">
-  <ion-content>
+  <ion-content overflow-scroll="false">
     <!--채널이없는 DID모드이면 가입하기 버튼이 안보이므로,-->
     <div class="signedChannel" ng-if="!player.ch_srl && player.didmode">
       미등록 단말기입니다.
@@ -10,12 +10,8 @@
         <p class="percent">{{progress}}%</p>
         <p class="total">downloading.. ({{down_cur+1}}/{{down_total}})</p>
     </div>
-    <div id="player_area">
-      <div class="fullheight" ng-include="'./templates/tpls/' + template_mode + '.html'"></div>
+    <div id="player_area" class="fullheight" ng-include="'./templates/tpls/' + template_mode + '.html'">
 
-      <ul id="ticker_01" class="ticker">
-        <li ng-repeat="data in player.notice"><a href="#" ng-click="openWebView(data.link)">{{data.text}}</a></li>
-      </ul>
     </div>
   </ion-content>
 </ion-view>

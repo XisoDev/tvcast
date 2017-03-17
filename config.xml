@@ -9,6 +9,8 @@
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <allow-intent href="cdvfile://*" launch-external="yes"/>
+  <allow-intent href="file:///*" launch-external="yes"/>
   <allow-intent href="http://*/*" launch-external="yes"/>
   <allow-intent href="https://*/*" launch-external="yes"/>
   <allow-intent href="tel:*" launch-external="yes"/>
@@ -77,5 +79,5 @@
     <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
   <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
-  <allow-navigation href="http://192.168.0.3:8100"/>
+  <allow-navigation href="*"/>
 </widget>

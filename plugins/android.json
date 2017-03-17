@@ -7,18 +7,19 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-crosswalk-webview": {
-            "XWALK_VERSION": "23+",
-            "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
-            "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
-            "XWALK_MODE": "embedded",
-            "XWALK_MULTIPLEAPK": "true",
-            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
-        },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
         },
+        "cordova-plugin-fcm": {
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+        },
         "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+        },
+        "cordova-plugin-media": {
             "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
         },
         "cordova-plugin-splashscreen": {
@@ -27,19 +28,21 @@
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
         },
+        "cordova-plugin-velda-devicefeedback": {
+            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
         },
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
-        },
-        "cordova-plugin-fcm": {
-            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
-        },
-        "cordova-plugin-velda-devicefeedback": {
+        "cordova-plugin-crosswalk-webview": {
+            "XWALK_VERSION": "23+",
+            "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
+            "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
+            "XWALK_MODE": "embedded",
+            "XWALK_MULTIPLEAPK": "true",
             "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
         }
     },

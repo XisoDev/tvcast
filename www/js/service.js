@@ -2,117 +2,174 @@ app
 
 .factory("Tpl", function(){
     return {
+
         "live_5_v2_v3" : {
           title : '방송용 1',
-          sequence_count : 5
+          sequence_count : 3,
+          is_notice : 'N',
+          is_did : 'N'
         },
         "live_6_v2_h1_v3" : {
           title : '방송용 2',
-          sequence_count : 6
+          sequence_count : 3,
+          is_notice : 'Y',
+          is_did : 'N'
         },
         "live_5_h2_v3" : {
           title : '방송용 3',
-          sequence_count : 5
+          sequence_count : 2,
+          is_notice : 'N',
+          is_did : 'N'
         },
         "live_6_v_h2_v3" : {
           title : '방송용 4',
-          sequence_count : 6
+          sequence_count : 4,
+          is_notice : 'N',
+          is_did : 'N'
         },
         "live_5_v2_v2_v3_2_1" : {
           title : '방송용 5',
-          sequence_count : 5
+          sequence_count : 3,
+          is_notice : 'N',
+          is_did : 'N'
         },
         "did_r" : {
           title : '가로형 DID 1',
-          sequence_count : 1
+          sequence_count : 1,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_r_2" : {
           title : '가로형 DID 2',
-          sequence_count : 2
+          sequence_count : 2,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_r_3" : {
           title : '가로형 DID 3',
-          sequence_count : 3
+          sequence_count : 3,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_r_2_1" : {
           title : '가로형 DID 4',
-          sequence_count : 2
+          sequence_count : 2,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_r_2_2" : {
           title : '가로형 DID 5',
-          sequence_count : 2
+          sequence_count : 2,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_r_2_3" : {
           title : '가로형 DID 6',
-          sequence_count : 2
+          sequence_count : 2,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_r_2_over_right" : {
           title : '가로형 DID 7',
-          sequence_count : 2
+          sequence_count : 2,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_r_2_over_left" : {
           title : '가로형 DID 8',
-          sequence_count : 2
+          sequence_count : 2,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_r_5_v_hvhv" : {
           title : '가로형 DID 9',
-          sequence_count : 5
+          sequence_count : 5,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_r_6" : {
           title : '가로형 DID 10',
-          sequence_count : 6
+          sequence_count : 6,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_r_4" : {
           title : '가로형 DID 11',
-          sequence_count : 4
+          sequence_count : 4,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_r_7" : {
           title : '가로형 DID 12',
-          sequence_count : 7
+          sequence_count : 7,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_r_12" : {
           title : '가로형 DID 13',
-          sequence_count : 12
+          sequence_count : 12,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_r_5" : {
           title : '가로형 DID 14',
-          sequence_count : 6
+          sequence_count : 6,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_r_9" : {
           title : '가로형 DID 15',
-          sequence_count : 9
+          sequence_count : 9,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_c_1" : {
           title : '세로형 DID 1',
-          sequence_count : 1
+          sequence_count : 1,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_c_2" : {
           title : '세로형 DID 2',
-          sequence_count : 2
+          sequence_count : 2,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_c_7" : {
           title : '세로형 DID 3',
-          sequence_count : 7
+          sequence_count : 7,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_c_9" : {
           title : '세로형 DID 4',
-          sequence_count : 9
+          sequence_count : 9,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_c_7_2" : {
           title : '세로형 DID 5',
-          sequence_count : 7
+          sequence_count : 7,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_c_7_3" : {
           title : '세로형 DID 6',
-          sequence_count : 7
+          sequence_count : 7,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_c_2_2" : {
           title : '세로형 DID 7',
-          sequence_count : 2
+          sequence_count : 2,
+          is_notice : 'Y',
+          is_did : 'Y'
         },
         "did_c_3" : {
           title : '세로형 DID 8',
-          sequence_count : 3
+          sequence_count : 3,
+          is_notice : 'Y',
+          is_did : 'Y'
         }
     }
 })

@@ -1,5 +1,5 @@
 // 레이아웃
-app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer, $timeout, FileObj, Server, Auth, Tpl, DownloadedContent, Content, Channel, Viewcount, Device){
+app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordovaFileTransfer, $timeout, FileObj, Server, Auth, Tpl, DownloadedContent, Content, Channel, Viewcount, $sce){
     $scope.time_id1 = null;
     $scope.is_downloding = false;
     $scope.tpls = Tpl;
@@ -15,6 +15,12 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
 
 
     $scope.seq_code = "";
+    $scope.trustSrc = function(src){
+      // return $cordovaFile.readAsDataURL(src).then(function(res){
+        return $sce.trustAsResourceUrl(src);
+      // });
+    }
+
 
     $scope.next = function(obj_id, data_obj, seq_idx){
         //뷰카운트를 전송
@@ -68,6 +74,10 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
 
     $scope.sequence = [];
     $scope.buildSlider = function(obj_id, data_obj){
+      //무료가아닐땐 하단배너가없으므로.. 템플릿에선 sequence 1부터 플레이되야함.
+        if($scope.is_free != "Y"){
+          obj_id = obj_id + 1;
+        }
         $scope.sequence[obj_id] = data_obj;
 
         setTimeout(function () {
@@ -151,14 +161,14 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
             }
             var path = DownloadedContent.get().content_srl + timelines[$scope.down_cur].uploaded_filename.substr(timelines[$scope.down_cur].uploaded_filename.lastIndexOf('/'));
             var targetPath = fileObj.externalDataDirectory + path;
-            timelines[$scope.down_cur].device_filename = targetPath;
+            // var targetPath = fileObj.dataDirectory + path;
             // console.log(targetPath);
 
             var downUrl = encodeURI(url + timelines[$scope.down_cur].uploaded_filename.substr(1));
             console.log('downUrl = '+downUrl);
 
             $cordovaFileTransfer.download(downUrl, targetPath, {}, true).then(function(res){
-                console.log(res);
+                timelines[$scope.down_cur].device_filename = res.toInternalURL();
                 $scope.down_cur++;
 
                 down(timelines);
@@ -193,7 +203,13 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
             }
             if(!clip.device_filename) {
                 var path = DownloadedContent.get().content_srl + clip.uploaded_filename.substr(clip.uploaded_filename.lastIndexOf('/'));
-                clip.device_filename = fileObj.externalDataDirectory + path;
+                // console.log(fileObj.dataDirectory);
+                console.log(path);
+                // clip.device_filename = "cdvfile://localhost/files/" + path;
+                // clip.device_filename = "http://did-data.xiso.co.kr/./files/images/201703/" + clip.uploaded_filename.substr(clip.uploaded_filename.lastIndexOf('/'));
+
+                path = fileObj.externalDataDirectory + path;
+                clip.device_filename = path;
             }
 
             this[clip.seq].push(clip);
@@ -243,12 +259,13 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFileTransfer,
     };
 
     // 다운받은 컨텐츠를 정리한다
+    $scope.is_free = "";
     $scope.setContent = function(content){
-
         // 기기에 저장된 Demo 시퀀스와 비교해서 다르면 다운로드 받는다.
         if($scope.template_mode != content.template) $scope.template_mode = content.template;
         if($scope.sequence_count != $scope.tpls[content.template].sequence_count) $scope.sequence_count = $scope.tpls[content.template].sequence_count;
         $scope.player.ch_srl = content.ch_srl;
+        $scope.is_free = content.is_free;
 
         $scope.player.notice = [];
 

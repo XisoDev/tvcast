@@ -4,8 +4,8 @@
        data-transform="{{data.transition}}"
        ng-attr-style="{{data.file_type.indexOf('i') == 0 ? 'background-image:url(' + data.device_filename + ');' : undefined}}"
     >
-        <video ng-if="data.file_type.indexOf('v') == 0">
-            <source ng-src="{{data.device_filename}}" type="video/mp4" />
+        <video ng-if="data.file_type.indexOf('v') == 0" playsinline>
+            <source ng-src="{{data.device_filename}}" />
         </video>
     </div>
 </div>
