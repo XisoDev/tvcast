@@ -254,13 +254,26 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
             $scope.is_downloading = false;
             console.log('파일 다운로드 완료');
             document.location.reload();
-            // $scope.runSlider(timelines);
         }
     };
 
     $scope.download = function(timelines){
         document.addEventListener('deviceready', function () {
             down(timelines);
+        }, false);
+    };
+
+    $scope.background_download = function(content){
+        document.addEventListener('deviceready', function () {
+            console.log(content.background);
+            if(content.background) {
+                var downUrl = encodeURI(Server.getMain() + content.bg_img.substr(1));
+                $cordovaFileTransfer.download(downUrl, content.background, {}, true).then(function(res){
+                    console.log(res);
+                },function(err){
+                    console.log(err);
+                });
+            }
         }, false);
     };
 
@@ -348,6 +361,13 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
             $scope.player.notice.push(notice);
         }
 
+        if(content.bg_img) {
+            var fileObj = FileObj.get();
+            var bg_img = content.content_srl + content.bg_img.substr(content.bg_img.lastIndexOf('/'));
+            content.background = fileObj.externalDataDirectory + bg_img;
+            $scope.player.background = content.background;
+        }
+
         if(content.timelines.length > 0) {
             var timelines = $scope.arr_2D_to_1D(content.timelines);
 
@@ -355,7 +375,8 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
 
                 console.log('down');
 
-                DownloadedContent.set(content);
+
+                DownloadedContent.set(content); // content 정보 기기에 저장
 
                 $scope.is_downloading = true;
                 $scope.down_total = timelines.length;
@@ -364,6 +385,10 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
                 clearInterval($scope.time_id1); // interval clear
 
                 $scope.download(timelines);
+
+                if(content.bg_img && content.background) {
+                    $scope.background_download(content);    // 배경이미지 다운로드
+                }
 
                 $scope.is_first = false;
             }else{
