@@ -26,6 +26,8 @@ app.run(function($ionicPlatform, $rootScope, $ionicPopup, FileObj, Device) {
 
         Device.set(ionic.Platform.device());
 
+        window.open = cordova.InAppBrowser.open;
+
     });
     //back button action
     $ionicPlatform.registerBackButtonAction(function(e) {

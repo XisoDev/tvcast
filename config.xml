@@ -17,6 +17,7 @@
   <allow-intent href="sms:*" launch-external="yes"/>
   <allow-intent href="mailto:*" launch-external="yes"/>
   <allow-intent href="geo:*" launch-external="yes"/>
+  <allow-intent href="market:*" launch-external="yes"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>

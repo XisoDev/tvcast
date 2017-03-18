@@ -328,3 +328,33 @@ footer td a{
 .total{
     font-size: 12px;
 }
+
+.ion-ios-pause {
+    position: absolute;
+    font-size: 5em;
+    z-index: 100;
+    top: 50%;
+    left: 50%; /* fixed to left. Replace it by right if you want.*/
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-shadow: 3px 3px #000;
+}
+
+.more {
+    position: absolute;
+    width: 100%;
+    display: block;
+    padding: 30% 0;
+    z-index: 100;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    color: #FFF;
+    background: rgba(0,0,0,.7);
+    font-size: 2em;
+    text-decoration: none;
+}

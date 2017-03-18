@@ -4,8 +4,15 @@
        data-transform="{{data.transition}}"
        ng-attr-style="{{data.file_type.indexOf('i') == 0 ? 'background-image:url(' + data.device_filename + ');' : undefined}}"
     >
-        <video ng-if="data.file_type.indexOf('v') == 0" playsinline>
-            <source ng-src="{{data.device_filename}}" />
-        </video>
+        <div style="position:relative; width:100%; height: 100%;">
+            <div style="position:absolute;z-index:10;width:100%;height:100%;" ng-click="play_toggle(data, seq_code, $index)"></div>
+
+            <a class="more" ng-click="go_more(data, seq_code, $index)" ng-show="data.is_pause && (data.url && data.url!='null' && data.url_prefix && data.url_prefix != 'null')">MORE</a>
+
+            <i class="ion-ios-pause" ng-show="data.is_pause"></i>
+            <div ng-if="data.file_type.indexOf('v') == 0">
+                <video id="{{seq_code}}_{{$index}}" playsinline><source ng-src="{{data.device_filename}}" type="video/mp4" /></video>
+            </div>
+        </div>
     </div>
 </div>
