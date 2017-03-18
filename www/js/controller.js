@@ -235,21 +235,25 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
             // var targetPath = fileObj.dataDirectory + path;
             // console.log(targetPath);
 
-            var downUrl = encodeURI(url + timelines[$scope.down_cur].uploaded_filename.substr(1));
-            console.log('downUrl = '+downUrl);
+            if(timelines[$scope.down_cur].clip_type != 'U') {
+                var downUrl = encodeURI(url + timelines[$scope.down_cur].uploaded_filename.substr(1));
 
-            $cordovaFileTransfer.download(downUrl, targetPath, {}, true).then(function(res){
-                timelines[$scope.down_cur].device_filename = res.toInternalURL();
-                $scope.down_cur++;
+                $cordovaFileTransfer.download(downUrl, targetPath, {}, true).then(function (res) {
+                    timelines[$scope.down_cur].device_filename = res.toInternalURL();
+                    $scope.down_cur++;
 
-                down(timelines);
-            },function(err){
-                console.log(err);
-            }, function (progress) {
-                $timeout(function () {
-                    $scope.progress = Math.floor((progress.loaded / progress.total) * 100);
+                    down(timelines);
+                }, function (err) {
+                    console.log(err);
+                }, function (progress) {
+                    $timeout(function () {
+                        $scope.progress = Math.floor((progress.loaded / progress.total) * 100);
+                    });
                 });
-            });
+            }else{
+                $scope.down_cur++;
+                down(timelines);
+            }
         }else{
             $scope.is_downloading = false;
             console.log('파일 다운로드 완료');

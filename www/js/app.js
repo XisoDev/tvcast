@@ -65,3 +65,9 @@ app.config(function($stateProvider,$urlRouterProvider) {
     });
   $urlRouterProvider.otherwise("/");
 });
+
+app.filter('trustUrl', function($sce){ // {{url_prefix | trustUrl : url}}
+    return function(url_prefix, url) {
+        return $sce.trustAsResourceUrl(url_prefix + url);
+    };
+});
