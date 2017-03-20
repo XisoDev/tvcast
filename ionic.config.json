@@ -1,10 +1,4 @@
 {
   "name": "did",
-  "app_id": "df7f7987",
-  "proxies": [
-    {
-      "path": "/api",
-      "proxyUrl": "http://did_main.xiso.co.kr"
-    }
-  ]
+  "app_id": "df7f7987"
 }

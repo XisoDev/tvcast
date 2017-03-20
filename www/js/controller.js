@@ -1,5 +1,5 @@
 // 레이아웃
-app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordovaFileTransfer, $timeout, FileObj, Server, Auth, Tpl, DownloadedContent, Content, Channel, Viewcount, $sce){
+app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordovaFileTransfer, $timeout, FileObj, Server, Auth, Tpl, DownloadedContent, Content, Channel, Viewcount){
     $scope.time_id1 = null;
     $scope.is_downloding = false;
     $scope.tpls = Tpl;

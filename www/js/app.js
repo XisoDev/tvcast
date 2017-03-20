@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('didplayer', ['ionic','ngCordova']);
 
-app.run(function($ionicPlatform, $rootScope, $ionicPopup, FileObj, Device) {
+app.run(function($ionicPlatform, $rootScope, $ionicPopup, FileObj, Device, ClockSrv, $filter) {
     $ionicPlatform.ready(function() {
         if(window.cordova && window.cordova.plugins.Keyboard) {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -29,6 +29,12 @@ app.run(function($ionicPlatform, $rootScope, $ionicPopup, FileObj, Device) {
         window.open = cordova.InAppBrowser.open;
 
     });
+
+    ClockSrv.clock(function() {
+        // console.log($filter('date')(Date.now(), 'yyyy-MM-dd HH:mm:ss'));
+        $rootScope.clock = $filter('date')(Date.now(), 'yyyy/MM/dd HH:mm:ss');
+    });
+
     //back button action
     $ionicPlatform.registerBackButtonAction(function(e) {
 
