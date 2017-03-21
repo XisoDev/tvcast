@@ -358,3 +358,20 @@ footer td a{
     font-size: 2em;
     text-decoration: none;
 }
+
+.clock {
+    position: absolute;  z-index:1000; font-size:2em; color: #fff; padding:20px;
+    left:1%;
+    -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.clock_top{
+    top:1%;
+}
+.clock_mid{
+    top:45%;
+}
+.clock_bot{
+    bottom:1%;
+}
