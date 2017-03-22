@@ -10,7 +10,7 @@
         <p class="percent">{{progress}}%</p>
         <p class="total">downloading.. ({{down_cur+1}}/{{down_total}})</p>
     </div>
-      <div class="clock clock_mid">{{clock}}</div>
+      <div ng-show="player.clock != 'N'" class="clock" ng-class="{'clock_top': player.clock == 'T', 'clock_mid': player.clock == 'M', 'clock_bot': player.clock == 'B'}">{{clock}}</div>
     <div id="player_area" class="fullheight" ng-include="'./templates/tpls/' + template_mode + '.html'"></div>
   </ion-content>
 </ion-view>

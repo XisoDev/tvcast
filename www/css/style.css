@@ -73,7 +73,7 @@ video {
   background:rgba(255,255,255,.85);
   padding:50px;
   border-radius:10px;
-  font-size:20px;
+  font-size:3vw;
   text-align:center;
 }
 .signedChannel .authNum{
@@ -312,7 +312,7 @@ footer td a{
 
 .progress{
     width:120px;
-    padding-top:15px;
+    padding: 1%;
     border-radius: 10px;
     z-index: 999;
     position: absolute;
@@ -323,10 +323,10 @@ footer td a{
     text-align: center;
 }
 .percent{
-    font-size: 30px;
+    font-size: 3vw;
 }
 .total{
-    font-size: 12px;
+    font-size: 2vw;
 }
 
 .ion-ios-pause {
@@ -360,18 +360,18 @@ footer td a{
 }
 
 .clock {
-    position: absolute;  z-index:1000; font-size:2em; color: #fff; padding:20px;
-    left:1%;
+    position: absolute;  z-index:1000; font-size:2vw; color: #fff; padding:1.5% 2%;
+    left:0.1%;
     -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .clock_top{
-    top:1%;
+    top:0.1%;
 }
 .clock_mid{
     top:45%;
 }
 .clock_bot{
-    bottom:1%;
+    bottom:0.1%;
 }

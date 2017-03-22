@@ -230,6 +230,11 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
             }else{
               url = Server.get().url;
             }
+
+            if($scope.is_free=='Y' && $scope.down_cur == 0){
+                url = Server.getMain();
+            }
+
             var path = DownloadedContent.get().content_srl + timelines[$scope.down_cur].uploaded_filename.substr(timelines[$scope.down_cur].uploaded_filename.lastIndexOf('/'));
             var targetPath = fileObj.externalDataDirectory + path;
             // var targetPath = fileObj.dataDirectory + path;
@@ -237,8 +242,10 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
 
             if(timelines[$scope.down_cur].clip_type != 'U') {
                 var downUrl = encodeURI(url + timelines[$scope.down_cur].uploaded_filename.substr(1));
+                console.log('downUrl = '+downUrl);
 
                 $cordovaFileTransfer.download(downUrl, targetPath, {}, true).then(function (res) {
+                    console.log(res);
                     timelines[$scope.down_cur].device_filename = res.toInternalURL();
                     $scope.down_cur++;
 
@@ -353,6 +360,8 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
         if($scope.sequence_count != $scope.tpls[content.template].sequence_count) $scope.sequence_count = $scope.tpls[content.template].sequence_count;
         $scope.player.ch_srl = content.ch_srl;
         $scope.is_free = content.is_free;
+        console.log(content);
+        $scope.player.clock = content.clock;
 
         $scope.player.notice = [];
 
