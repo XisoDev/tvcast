@@ -13,42 +13,45 @@
             "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
             "XWALK_MODE": "embedded",
             "XWALK_MULTIPLEAPK": "true",
-            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.tvcast"
         },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.tvcast"
         },
         "cordova-plugin-fcm": {
-            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.tvcast"
         },
         "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.tvcast"
         },
         "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.tvcast"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "kr.co.amuz.softgear.tvcast"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.tvcast"
         },
         "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.tvcast"
         },
         "cordova-plugin-velda-devicefeedback": {
-            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.tvcast"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.tvcast"
         },
         "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.tvcast"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.tvcast"
         },
         "cordova-plugin-file": {
-            "PACKAGE_NAME": "kr.co.amuz.softgear.didplayer"
+            "PACKAGE_NAME": "kr.co.amuz.softgear.tvcast"
         }
     }
 }

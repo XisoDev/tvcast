@@ -87,21 +87,12 @@ video {
   font-size:30px;
 }
 #fixedBtn{
-  position:Fixed;
-  right:0;
-  bottom:0;
-  width:170px;
-  height:110px;
   background:#444;
-  z-index:10;
-}
-#fixedBtn button{
   color:#FFF;
+  box-sizing:border-box;
   text-align:center;
-  width:100%;
-  height:100%;
-  background:transparent;
   font-size:20px;
+  line-height:20px;
   border:none;
 }
 #player_area{
