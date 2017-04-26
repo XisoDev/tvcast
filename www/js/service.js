@@ -211,7 +211,7 @@ app
     };
 
     self.getMain = function(){
-      return 'http://did.xiso.co.kr';
+      return 'http://live.softgear.kr';
     };
 
     self.setMain = function(){
@@ -426,9 +426,9 @@ app
     }
 })
 
-.factory('XisoApi', function($http, Object){
+.factory('XisoApi', function($http, Object, Server){
     var service = {};
-    var baseUrl = 'http://did.xiso.co.kr';
+    var baseUrl = Server.getMain();
 
     var finalUrl = '';
 
