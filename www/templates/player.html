@@ -1,6 +1,6 @@
 <ion-view view-title="DID PLAYER" name="playerView">
   <ion-content overflow-scroll="false">
-    <div style="position:fixed; background-size:cover; background-position:center; top:0; left:0; width:100%; z-index:-1; background-image: url('./img/splash.png');height:100%;">
+    <div id="splash" style="position:fixed; background-size:cover; background-position:center; top:0; left:0; width:100%; z-index:1000; background-image: url('./img/splash.png');height:100%;">
     </div>
     <!--채널이없는 DID모드이면 가입하기 버튼이 안보이므로,-->
     <div class="signedChannel" ng-if="(player.ch_srl == 0 || !player.ch_srl) && player.didmode && auth_no">

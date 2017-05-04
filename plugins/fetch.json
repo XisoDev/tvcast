@@ -34,7 +34,7 @@
     "cordova-plugin-splashscreen": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-splashscreen@4.0.2"
+            "id": "cordova-plugin-splashscreen@4.0.3"
         },
         "is_top_level": true,
         "variables": {}
@@ -42,7 +42,7 @@
     "cordova-plugin-statusbar": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-statusbar@2.2.2"
+            "id": "cordova-plugin-statusbar@2.2.3"
         },
         "is_top_level": true,
         "variables": {}
@@ -74,7 +74,7 @@
     "cordova-plugin-inappbrowser": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-inappbrowser@1.7.0"
+            "id": "cordova-plugin-inappbrowser@1.7.1"
         },
         "is_top_level": true,
         "variables": {}
@@ -82,7 +82,7 @@
     "cordova-plugin-media": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-media@3.0.0"
+            "id": "cordova-plugin-media@3.0.1"
         },
         "is_top_level": true,
         "variables": {}
@@ -99,6 +99,14 @@
         "source": {
             "type": "registry",
             "id": "cordova-plugin-file-transfer"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-x-toast": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-x-toast"
         },
         "is_top_level": true,
         "variables": {}

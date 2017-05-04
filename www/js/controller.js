@@ -1,5 +1,9 @@
 // 레이아웃
 app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordovaFileTransfer, $timeout, FileObj, Server, Auth, Tpl, DownloadedContent, Content, Channel, Viewcount){
+    setTimeout(function(){
+      jQuery("#splash").fadeOut();
+    },5000);
+
     $scope.time_id1 = null;
     $scope.is_downloding = false;
     $scope.tpls = Tpl;
@@ -124,7 +128,7 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
     $scope.openWebView = function(url){
         window.open(url, '_blank', 'closebuttoncaption=닫기, location=no, zoom=no');
     };
-    
+
     $scope.play_toggle = function(data, seq_code, index){
         console.log(data);
         console.log(seq_code + '_' +index);
@@ -416,7 +420,7 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
                 }
             }
         }
-        
+
     };
 
     $scope.time_id1 = setInterval($scope.checkChannel, 2000);
