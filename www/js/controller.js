@@ -170,7 +170,15 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
     $scope.go_more = function(data, seq_code, index){
         // console.log('go more clicked');
         // 'http://','https://','tel:','sms:','mailto:'
-        if(data.url_prefix == 'http://' || data.url_prefix == 'https://'){
+        if(data.url_prefix == 'content:'){
+            Content.update(data.url).then(function(res){
+              if(res.error == 0){
+                document.location.reload();
+              }else{
+                alert('컨텐츠의 변경에 실패했습니다.');
+              }
+            });
+        } else if(data.url_prefix == 'http://' || data.url_prefix == 'https://'){
             $scope.openInAppBrowser(data.url_prefix + data.url);
         } else {
             window.location.href = data.url_prefix + data.url;
@@ -267,7 +275,11 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
             }
         }else{
             $scope.is_downloading = false;
-            console.log('파일 다운로드 완료');
+            //바꿔치기 하고
+            window.localStorage['play_content'] = window.localStorage['downloaded_content'];
+            //찌꺼기제거
+            delete window.localStorage['downloaded_content'];
+
             document.location.reload();
         }
     };
