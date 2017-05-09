@@ -15,7 +15,10 @@
         새로운 컨텐츠 {{down_total}} 개 중 {{down_cur+1}}번째를 다운로드 하고 있습니다.
       </div>
     </div>
-      <div ng-if="player.clock != 'N'" class="clock" ng-class="{'clock_top': player.clock == 'T', 'clock_mid': player.clock == 'M', 'clock_bot': player.clock == 'B'}">{{clock}}</div>
+      <div ng-if="player.clock != 'N'" class="clock" ng-class="{'clock_top': player.clock == 'T', 'clock_mid': player.clock == 'M', 'clock_bot': player.clock == 'B'}">
+          <b>{{clock_HM}}</b>
+          {{clock_YMD}}
+      </div>
     <div id="player_area" class="fullheight" ng-include="'./templates/tpls/' + template_mode + '.html'" ng-attr-style="{{player.background ? 'background-image:url(' + player.background + ');' : undefined}}"></div>
   </ion-content>
 </ion-view>

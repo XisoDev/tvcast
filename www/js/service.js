@@ -270,10 +270,16 @@ app
 .factory("DownloadedContent", function(){
     var self = this;
 
-    self.get = function(){
-      if(!window.localStorage['play_content']) return false;
+    self.getNewContent = function(){
+        if(!window.localStorage['downloaded_content']) return false;
 
-      return JSON.parse(window.localStorage['play_content']);
+        return JSON.parse(window.localStorage['downloaded_content']);
+    }
+
+    self.get = function(){
+        if(!window.localStorage['play_content']) return false;
+
+        return JSON.parse(window.localStorage['play_content']);
     };
 
     self.set = function(content){

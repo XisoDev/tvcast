@@ -93,12 +93,12 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
 
             //이번 클립이 비디오면 재생.
             if (data_obj[0].clip_type == 'V'  && l.find(".bp-hs_inner__item.is-active").find('video').size()) {
-                var video = l.find(".bp-hs_inner__item.is-active").find('video')[0];
-                video.play();
+                var video2 = l.find(".bp-hs_inner__item.is-active").find('video')[0];
+                video2.play();
 
                 $scope.video_ended.push(seq_code + "_" + data_obj[0].file_srl);
 
-                video.addEventListener("ended", function () {
+                video2.addEventListener("ended", function () {
                     console.log("ended video : " + seq_code + "_" + data_obj[0].file_srl);
                     if (data_obj[1]) {
                         $scope.next(seq_code, data_obj, 1);
@@ -134,13 +134,13 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
         console.log(seq_code + '_' +index);
         if(data.clip_type == 'V') {
             //비디오일때
-            var video = jQuery('#' + seq_code + '_' + index)[0];   //#sequence0_0
+            var video3 = jQuery('#' + seq_code + '_' + index)[0];   //#sequence0_0
             // video.paused ? video.play() : video.pause();
             if(data.is_pause) {
-                video.play();
+                video3.play();
                 data.is_pause = false;
             }else{
-                video.pause();
+                video3.pause();
                 data.is_pause = true;
             }
         }else if(data.clip_type == 'I'){
@@ -247,7 +247,7 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
                 url = Server.getMain();
             }
 
-            var path = DownloadedContent.get().content_srl + timelines[$scope.down_cur].uploaded_filename.substr(timelines[$scope.down_cur].uploaded_filename.lastIndexOf('/'));
+            var path = DownloadedContent.getNewContent().content_srl + timelines[$scope.down_cur].uploaded_filename.substr(timelines[$scope.down_cur].uploaded_filename.lastIndexOf('/'));
             var targetPath = fileObj.externalDataDirectory + path;
             // var targetPath = fileObj.dataDirectory + path;
             // console.log(targetPath);
