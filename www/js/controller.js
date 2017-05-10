@@ -20,7 +20,10 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
     $scope.seq_code = "";
     $scope.time_ids = [];
     $scope.video_ended = new Array();
-    $scope.next = function(seq_code, data_obj, clip_idx){
+    $scope.next = function(seq_code, clip_idx){
+
+        var data_obj = $scope.sequence[seq_code];
+
         //뷰카운트를 전송
         Viewcount.send(DownloadedContent.get().content_srl, data_obj[clip_idx].file_srl);
 
@@ -46,20 +49,21 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
                 video.addEventListener("ended", function(){
                     console.log("ended video : " + seq_code + "_" + data_obj[clip_idx].file_srl);
                     if (data_obj[parseInt(clip_idx) + 1]) {
-                        $scope.next(seq_code, data_obj, parseInt(clip_idx) + 1); // 다음 클립이 있으면 다음 클립
+                        $scope.next(seq_code, parseInt(clip_idx) + 1); // 다음 클립이 있으면 다음 클립
                     } else {
-                        $scope.next(seq_code, data_obj, 0); // 다음 클립이 없으면 0번째 부터
+                        $scope.next(seq_code, 0); // 다음 클립이 없으면 0번째 부터
                     }
                 });
             }
         //이번 클립이 비디오가 아닐때
         }else{
+            clearTimeout($scope.time_ids[seq_code + '_' + data_obj[clip_idx].file_srl]);
             //build next_seq
             $scope.time_ids[seq_code + '_' + data_obj[clip_idx].file_srl] = setTimeout(function () {
                 if (data_obj[parseInt(clip_idx) + 1]) {
-                    $scope.next(seq_code, data_obj, parseInt(clip_idx) + 1);
+                    $scope.next(seq_code, parseInt(clip_idx) + 1);
                 } else {
-                    $scope.next(seq_code, data_obj, 0);
+                    $scope.next(seq_code, 0);
                 }
             }, data_obj[clip_idx].duration * 1000);
         }
@@ -101,17 +105,20 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
                 video2.addEventListener("ended", function () {
                     console.log("ended video : " + seq_code + "_" + data_obj[0].file_srl);
                     if (data_obj[1]) {
-                        $scope.next(seq_code, data_obj, 1);
+                        $scope.next(seq_code, 1);
                     } else {
-                        video.play();
+                        // video2.play();
+                        video2.load();
+                        video2.play();
                     }
                 });
             }else{
+                clearTimeout($scope.time_ids[seq_code + '_' + data_obj[0].file_srl]);
                 // 이미지일때
                 $scope.time_ids[seq_code + '_' + data_obj[0].file_srl] = setTimeout(function () {
                     // 다음 클립이 있을때만 동작
                     if(data_obj[1]) {
-                        $scope.next(seq_code, data_obj, 1);
+                        $scope.next(seq_code, 1);
                     }
                 }, data_obj[0].duration * 1000);
             }
@@ -129,62 +136,6 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
         window.open(url, '_blank', 'closebuttoncaption=닫기, location=no, zoom=no');
     };
 
-    $scope.play_toggle = function(data, seq_code, index){
-        console.log(data);
-        console.log(seq_code + '_' +index);
-        if(data.clip_type == 'V') {
-            //비디오일때
-            var video3 = jQuery('#' + seq_code + '_' + index)[0];   //#sequence0_0
-            // video.paused ? video.play() : video.pause();
-            if(data.is_pause) {
-                video3.play();
-                data.is_pause = false;
-            }else{
-                video3.pause();
-                data.is_pause = true;
-            }
-        }else if(data.clip_type == 'I'){
-            //이미지일때
-            if(data.is_pause) {
-                // 이미지일때 다음 클립이 있을때
-                if($scope.sequence[seq_code][index+1]) {
-                    $scope.time_ids[seq_code + '_' + data.file_srl] = setTimeout(function () {
-                        $scope.next(seq_code, $scope.sequence[seq_code], index + 1);
-                    }, 3000);
-                }else{
-                    $scope.time_ids[seq_code + '_' + data.file_srl] = setTimeout(function () {
-                        $scope.next(seq_code, $scope.sequence[seq_code], 0);
-                    }, 3000);
-                }
-                data.is_pause = false;
-            }else{
-                clearTimeout($scope.time_ids[seq_code + '_' + data.file_srl]);
-                data.is_pause = true;
-            }
-        }else{
-            //URL 일때
-
-        }
-    };
-
-    $scope.go_more = function(data, seq_code, index){
-        // console.log('go more clicked');
-        // 'http://','https://','tel:','sms:','mailto:'
-        if(data.url_prefix == 'content:'){
-            Content.update(data.url).then(function(res){
-              if(res.error == 0){
-                document.location.reload();
-              }else{
-                alert('컨텐츠의 변경에 실패했습니다.');
-              }
-            });
-        } else if(data.url_prefix == 'http://' || data.url_prefix == 'https://'){
-            $scope.openInAppBrowser(data.url_prefix + data.url);
-        } else {
-            window.location.href = data.url_prefix + data.url;
-        }
-    };
-
     $scope.openInExternalBrowser = function(url){ // Open in external browser
         window.open(url,'_system','location=yes');
     };
@@ -195,35 +146,6 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
 
     $scope.openCordovaWebView = function(url){ // Open cordova webview if the url is in the whitelist otherwise opens in app browser
         window.open(url,'_self');
-    };
-
-    //다른채널 보기
-    //데모 목록
-    $scope.channel_list = Channel.getList();
-
-    $scope.changeChannel = function(channel){
-        //마찬가지로 localStorage에 저장해야하고
-
-        //새 채널에관한 시퀀스정보를 받아서
-
-        //다운로드해야함. (프로그래스)
-
-        //그리고 플레이어의 채널을 변경.
-        $scope.player.channel = channel;
-        $scope.closeChannelList();
-    };
-
-    $ionicModal.fromTemplateUrl('./templates/channel_list.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.modal = modal;
-    });
-    $scope.openChannelList = function() {
-        $scope.modal.show();
-    };
-    $scope.closeChannelList = function() {
-        $scope.modal.hide();
     };
 
     $scope.down_total = 0; // 다운로드 해야 될 파일 수
@@ -331,7 +253,7 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
         });
 
         clearInterval($scope.time_id1);
-        $scope.time_id1 = setInterval($scope.checkChannel, 20000);    // 30초 마다 갱신
+        $scope.time_id1 = setInterval($scope.checkChannel, 20000);    // 20초 마다 갱신
     };
 
     // 채널 정보를 받아온다. 없으면 인증번호를 받아옴.
@@ -400,11 +322,11 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
         if(content.timelines.length > 0) {
             var timelines = $scope.arr_2D_to_1D(content.timelines);
 
+            console.log(DownloadedContent.get());
+
             if(!DownloadedContent.get() || (DownloadedContent.get().content_srl != content.content_srl) || !$scope.isSameContent(DownloadedContent.get(), content)){
 
                 console.log('down');
-
-
                 DownloadedContent.set(content); // content 정보 기기에 저장
 
                 $scope.is_downloading = true;
