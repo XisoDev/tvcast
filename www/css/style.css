@@ -305,7 +305,7 @@ footer td a{
 
 .progress{
   width: 100%;
-  border-radius: 10px;
+  /*border-radius: 10px;*/
   z-index: 901;
   position: absolute;
   top: 0;
