@@ -41,6 +41,7 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
         if (data_obj[clip_idx].clip_type == 'V'  && l.find(".bp-hs_inner__item.is-active").find('video').size()) {
             var video = l.find(".bp-hs_inner__item.is-active").find('video')[0];
 
+            video.load();
             video.play();
 
             if($scope.video_ended.indexOf(seq_code + "_" + data_obj[clip_idx].file_srl) == -1){
@@ -98,6 +99,7 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
             //이번 클립이 비디오면 재생.
             if (data_obj[0].clip_type == 'V'  && l.find(".bp-hs_inner__item.is-active").find('video').size()) {
                 var video2 = l.find(".bp-hs_inner__item.is-active").find('video')[0];
+                video2.load();
                 video2.play();
 
                 $scope.video_ended.push(seq_code + "_" + data_obj[0].file_srl);
@@ -197,6 +199,20 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
             }
         }else{
             $scope.is_downloading = false;
+            
+            //이전 디렉토리 삭제
+            if(DownloadedContent.get()) {
+                console.log(DownloadedContent.get().content_srl);
+                console.log(DownloadedContent.getNewContent().content_srl);
+                if(DownloadedContent.get().content_srl != DownloadedContent.getNewContent().content_srl) {
+                    $cordovaFile.removeRecursively(fileObj.externalDataDirectory, DownloadedContent.get().content_srl).then(function (success) {
+                        console.log('이전 경로의 파일 삭제됨');
+                    }, function (error) {
+                        console.log('파일 삭제실패');
+                    });
+                }
+            }
+            
             //바꿔치기 하고
             window.localStorage['play_content'] = window.localStorage['downloaded_content'];
             //찌꺼기제거
@@ -322,10 +338,7 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
         if(content.timelines.length > 0) {
             var timelines = $scope.arr_2D_to_1D(content.timelines);
 
-            console.log(DownloadedContent.get());
-
             if(!DownloadedContent.get() || (DownloadedContent.get().content_srl != content.content_srl) || !$scope.isSameContent(DownloadedContent.get(), content)){
-
                 console.log('down');
                 DownloadedContent.set(content); // content 정보 기기에 저장
 
