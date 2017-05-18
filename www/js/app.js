@@ -28,7 +28,7 @@ app.run(function($ionicPlatform, $rootScope, $ionicPopup, FileObj, Device, Clock
 
         window.open = cordova.InAppBrowser.open;
 
-        FCMPlugin.getToken(
+        /*FCMPlugin.getToken(
             function(token){
                 console.log(token);
                 FCMToken.set(token);
@@ -36,7 +36,7 @@ app.run(function($ionicPlatform, $rootScope, $ionicPopup, FileObj, Device, Clock
             function(err){
                 console.log('error retrieving token: ' + err);
             }
-        );
+        );*/
     });
 
 

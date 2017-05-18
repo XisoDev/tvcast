@@ -266,12 +266,12 @@ app
   return self;
 })
 
-.factory("Auth", function(XisoApi, Device, FCMToken){
+.factory("Auth", function(XisoApi, Device){
     var self = this;
 
     self.get = function(){
         var device = Device.get();
-        var params = { uuid : device.uuid, model : device.model, serial : device.serial, version : device.version, is_did : 'Y', fcm_token : FCMToken.get() };
+        var params = { uuid : device.uuid, model : device.model, serial : device.serial, version : device.version, is_did : 'Y' };
         // console.log(params);
 
         //플레이어의 uuid로 인증번호 생성. 인증번호 받아옴. 채널ID가 있으면 채널테이블에서 SERVER URL 받아옴
