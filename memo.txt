@@ -1,3 +1,7 @@
+tvcast.keystore
+pwd = jdfnc123
+alias = homebang_tv
+
 keystore password
 jdfnc123
 
