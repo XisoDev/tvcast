@@ -63,14 +63,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-fcm": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-fcm"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-inappbrowser": {
         "source": {
             "type": "registry",

@@ -72,6 +72,8 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
 
     $scope.sequence = [];
     $scope.buildSlider = function(seq_idx, data_obj){
+        console.log('seq_idx = '+seq_idx);
+        console.log(data_obj);
         //무료가아닐땐 하단배너가없으므로.. 템플릿에선 sequence 1부터 플레이되야함.
         var seq_code = '';
         if($scope.is_free != "Y"){
@@ -244,6 +246,7 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
 
     // 슬라이더를 실행한다
     $scope.runSlider = function(timelines){
+        console.log('슬라이더를 실행한다');
         var fileObj = FileObj.get();
         var sequences = [];
         angular.forEach(timelines, function(clip, idx){
@@ -277,30 +280,47 @@ app.controller('playerCtrl', function($scope, $ionicModal, $cordovaFile, $cordov
         console.log('check Channel');
 
         Auth.get().then(function(res){
-            // console.log(res);
-            $scope.auth_no = res.result.auth_no;
+            console.log(res);
+            if(res.result) {
+                $scope.auth_no = res.result.auth_no;
 
-            // 데이터 서버 주소가 있으면 (채널 ID 가 있으면) 데이터 서버에서 컨텐츠 정보를 받아온다.
-            if(res.result.server_url){
+                // 데이터 서버 주소가 있으면 (채널 ID 가 있으면) 데이터 서버에서 컨텐츠 정보를 받아온다.
+                if (res.result.server_url) {
+                    Server.set({url: res.result.server_url, is_main: 'N'});
 
-                Server.set({url: res.result.server_url, is_main: 'N'});
+                    Content.get(res.result).then(function (res2) {
+                        // console.log(res2);
 
-                Content.get(res.result).then(function(res2){
-                    // console.log(res2);
+                        $scope.setContent(res2.result);
+                    });
 
-                    $scope.setContent(res2.result);
-                });
+                    // 채널 ID 가 없으면 인증번호를 받고 데모 컨텐츠 정보를 받아온다
+                } else {
+                    Server.setMain();
 
-            // 채널 ID 가 없으면 인증번호를 받고 데모 컨텐츠 정보를 받아온다
+                    Content.get().then(function (res2) {
+                        console.log(res2);
+
+                        $scope.setContent(res2.result);
+                    });
+                }
             }else{
+                console.log('인증번호 받지못함');
+                var content = DownloadedContent.get();
+                $scope.setContent(content);
 
-                Server.setMain();
+                /*
+                if(content) {
+                    var timelines = $scope.arr_2D_to_1D(content.timelines);
+                    console.log(timelines);
 
-                Content.get().then(function(res2){
-                    console.log(res2);
+                    if ($scope.is_first) {
+                        $scope.runSlider(timelines);
 
-                    $scope.setContent(res2.result);
-                });
+                        $scope.is_first = false;
+                    }
+                }
+                */
             }
         });
 
